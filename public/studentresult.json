@@ -1,36 +1,41 @@
 [{
         "id": 10,
-        "maths": 30,
+        "name": "Maruf",
+        "maths": 90,
         "physics": 50,
         "chemistry": 60,
         "biology": 60,
         "english": 70
     }, {
         "id": 11,
-        "maths": 30,
-        "physics": 50,
+        "name": "Mobin",
+        "maths": 29,
+        "physics": 70,
         "chemistry": 60,
         "biology": 60,
         "english": 70
     },
     {
         "id": 12,
-        "maths": 30,
-        "physics": 50,
+        "name": "Nayem",
+        "maths": 40,
+        "physics": 40,
         "chemistry": 60,
         "biology": 60,
         "english": 70
     },
     {
         "id": 13,
-        "maths": 30,
+        "name": "Abdur Jabbar",
+        "maths": 20,
         "physics": 50,
         "chemistry": 60,
         "biology": 60,
         "english": 70
     }, {
         "id": 14,
-        "maths": 30,
+        "name": "Haider",
+        "maths": 5,
         "physics": 50,
         "chemistry": 60,
         "biology": 60,
