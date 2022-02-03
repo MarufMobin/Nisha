@@ -23,6 +23,7 @@ const Home = () => {
             <div className="row">
                 <div className="col-md-12">
                     <input type="text" onChange={value} placeholder='Input A id' className='form-control w-25' />
+                    
                 </div>
             </div>
         </div>
