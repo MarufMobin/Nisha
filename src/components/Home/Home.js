@@ -2,78 +2,93 @@ import React, { useEffect, useState } from 'react';
 import { ProgressBar } from 'react-bootstrap';
 
 const Home = () => {
+    // all states
+    const [number, setNumber] = useState([]);
+    const [singleData, setSingleData] = useState({});
+    const [value, setValue] = useState(null);
 
-     const [users, setUsers] = useState([]);
-     const [result , setResult] = useState([]);
-
-    const value = (e) =>{
+    // get student api from local json file
+    useEffect(() => {
         fetch(`/studentresult.json`)
-        .then( res => res.json())
-       .then( data => setUsers(data))   
+            .then(res => res.json())
+            .then(data => setSingleData(data.find(singleData => singleData?.id === value)))
+    }, [value])
 
-       let singleData  = users.filter( user => user.id == e.target.value);
-       setResult(singleData)
+    //calculate the student marks
+    let avg;
+    if (singleData?.id) {
+        const { biology, english, physics, maths, chemistry } = singleData
+        const sum = biology + chemistry + english + maths + physics
+        avg = sum / 5
+    } else {
+        console.log('Enter student id')
     }
 
-    const  classChanger = value  => {
-        if( value >= 90 ){
+    //variant of progressbar
+    const classChanger = value => {
+        if (value >= 90) {
             const primaryColor = 'success';
             return primaryColor;
         }
-        else if( value >= 70 ){
+        else if (value >= 70) {
             const primaryColor = '';
             return primaryColor;
         }
-        else if( value >= 50 ){
+        else if (value >= 50) {
             const primaryColor = 'warning';
             return primaryColor;
         }
-        else if( value >= 30 ){
+        else if (value >= 30) {
             const primaryColor = 'danger';
             return primaryColor;
         }
-        else{
+        else {
             const primaryColor = 'danger';
             return primaryColor;
         }
     }
 
+    //UI markshit
+    const serverBtn = () => {
+        setNumber(singleData);
+        let getInput = document.getElementById('input-field')
+        getInput.value = ''
+    }
+    //get student id from input
+    const getUserInput = (e) => {
+        setValue(parseInt(e.target.value))
+        setNumber([])
+    }
 
     return (
-        <div className='container'>
+        <div className='container mb-5'>
             <div className="row">
                 <div className="col-md12">
-                <h1 className='text-center my-5'>Calculated the Parsentenge level Of person's mark </h1>
+                    <h1 className='text-center my-5'>Calculated the Parsentenge level Of person's mark </h1>
                 </div>
             </div>
             <div className="row">
-                <div className="col-md-12">
-                    <input type="text" onChange={value} placeholder='Input of a student id' className='form-control w-25' />
-                    <h4 className='mb-5 mt-3'>Subject Persentage</h4>
-                   {
-                       result.map( res =>
-                        <div>
-                            {/* <div class="progress">
-                                <div className="progress-bar" role="progressbar" 
-                                style={{ width:  `${res?.maths}%` }}  aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">{ res?.maths}</div>
-                            </div> */}
-
-                            <h2>Result's of { res?.name}</h2>
-                            <div className='col-md-4'>
-                           <h6>Maths </h6>  <ProgressBar variant={classChanger( res?.maths)} now={res?.maths} label={`${res?.maths}%`}  /> <br /><br />
-                           <h6>Physics </h6>   <ProgressBar variant={classChanger( res?.physics)} now={res?.physics} label={`${res?.physics}%`} />  <br /><br />
-                           <h6> Chemistry </h6>    <ProgressBar variant={classChanger( res?.chemistry)} now={ res?.chemistry} label={`${res?.chemistry}%`} />  <br /><br />
-                           <h6>Biology </h6>   <ProgressBar variant={classChanger( res?.biology)} now={res?.biology} label={`${res?.biology}%`} />  <br /><br />
-                           <h6> English </h6>   <ProgressBar variant={classChanger( res?.english)} now={res?.english} label={`${res?.english}%`} />  <br /><br />
-                            </div>
-                            <input type="text" value={ res?.name} /> 
-                           <input type="text" value={20}/> <input type="text" value={ res?.physics} /> <input type="text"value={ res?.chemistry} /> <input type="text" value={ res?.biology}/> <input type="text" value={ res?.english}  />
-                           
-                           </div> )
-                   }
-                  
+                <div className="col-md-6 col-sm-12 col-lg-6">
+                    <input type="text" id="input-field" className='form-control' onChange={getUserInput} placeholder='Student Id' /> <br /> <br />
+                    <span onClick={serverBtn} className='btn btn-secondary d-inline'>Get Data From Server</span>
+                    <br /> <br />
                 </div>
-                
+            </div>
+            <div className="row">
+                <div className="col-md-6 col-lx-6 col-sm-12">
+                    <div>
+                        {singleData?.name && <h2>Result's of {singleData?.name}</h2>}
+                        {
+                            number?.id && value > 0 ? <div>
+                                <h6>Maths </h6>  <ProgressBar variant={classChanger(number?.maths)} now={number?.maths} label={`${number?.maths}%`} /> <br /><br />
+                                <h6>Physics </h6>   <ProgressBar variant={classChanger(number?.physics)} now={number?.physics} label={`${number?.physics}%`} />  <br /><br />
+                                <h6> Chemistry </h6>    <ProgressBar variant={classChanger(number?.chemistry)} now={number?.chemistry} label={`${number?.chemistry}%`} />  <br /><br />
+                                <h6>Biology </h6>   <ProgressBar variant={classChanger(number?.biology)} now={number?.biology} label={`${number?.biology}%`} />  <br /><br />
+                                <h6> English </h6>   <ProgressBar variant={classChanger(number?.english)} now={number?.english} label={`${number?.english}%`} />  <br /><br />
+                            </div> : avg && <ProgressBar variant={'success'} now={50} label={`${avg}%`} />
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     );
