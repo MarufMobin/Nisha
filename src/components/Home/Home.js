@@ -51,8 +51,8 @@ const Home = () => {
     //UI markshit
     const serverBtn = () => {
         setNumber(singleData);
-        let getInput = document.getElementById('input-field')
-        getInput.value = ''
+        let getInput = document.getElementById('input-field');
+        getInput.value = '';
     }
     //get student id from input
     const getUserInput = (e) => {
