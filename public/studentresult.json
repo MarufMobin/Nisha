@@ -5,7 +5,8 @@
         "physics": 50,
         "chemistry": 60,
         "biology": 60,
-        "english": 70
+        "english": 70,
+        "religion": 70
     }, {
         "id": 11,
         "name": "Mobin",
@@ -13,7 +14,8 @@
         "physics": 70,
         "chemistry": 60,
         "biology": 60,
-        "english": 70
+        "english": 70,
+        "religion": 70
     },
     {
         "id": 12,
@@ -22,7 +24,8 @@
         "physics": 40,
         "chemistry": 60,
         "biology": 60,
-        "english": 70
+        "english": 70,
+        "religion": 70
     },
     {
         "id": 13,
@@ -31,7 +34,8 @@
         "physics": 50,
         "chemistry": 60,
         "biology": 60,
-        "english": 70
+        "english": 70,
+        "religion": 70
     }, {
         "id": 14,
         "name": "Haider",
@@ -39,6 +43,7 @@
         "physics": 50,
         "chemistry": 60,
         "biology": 60,
-        "english": 70
+        "english": 70,
+        "religion": 70
     }
 ]

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ProgressBar } from 'react-bootstrap';
 
 const Home = () => {
+    
     // all states
     const [number, setNumber] = useState([]);
     const [singleData, setSingleData] = useState({});
@@ -17,9 +18,9 @@ const Home = () => {
     //calculate the student marks
     let avg;
     if (singleData?.id) {
-        const { biology, english, physics, maths, chemistry } = singleData
-        const sum = biology + chemistry + english + maths + physics
-        avg = sum / 5
+        const { biology, english, physics, maths, chemistry,religion } = singleData
+        const sum = biology + chemistry + english + maths + physics+religion;
+        avg = Math.floor( sum / 6 );
     } else {
         console.log('Enter student id')
     }
@@ -85,6 +86,7 @@ const Home = () => {
                                 <h6> Chemistry </h6>    <ProgressBar variant={classChanger(number?.chemistry)} now={number?.chemistry} label={`${number?.chemistry}%`} />  <br /><br />
                                 <h6>Biology </h6>   <ProgressBar variant={classChanger(number?.biology)} now={number?.biology} label={`${number?.biology}%`} />  <br /><br />
                                 <h6> English </h6>   <ProgressBar variant={classChanger(number?.english)} now={number?.english} label={`${number?.english}%`} />  <br /><br />
+                                <h6> Relagion </h6>   <ProgressBar variant={classChanger(number?.religion)} now={number?.religion} label={`${number?.religion}%`} />  <br /><br />
                             </div> : avg && <ProgressBar variant={'success'} now={50} label={`${avg}%`} />
                         }
                     </div>
