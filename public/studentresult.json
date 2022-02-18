@@ -6,7 +6,8 @@
         "chemistry": 60,
         "biology": 60,
         "english": 70,
-        "religion": 70
+        "religion": 70,
+        "Urdu": 20
     }, {
         "id": 11,
         "name": "Mobin",
@@ -15,7 +16,8 @@
         "chemistry": 60,
         "biology": 60,
         "english": 70,
-        "religion": 70
+        "religion": 70,
+        "Urdu": 20
     },
     {
         "id": 12,
@@ -25,7 +27,8 @@
         "chemistry": 60,
         "biology": 60,
         "english": 70,
-        "religion": 70
+        "religion": 70,
+        "Urdu": 20
     },
     {
         "id": 13,
@@ -35,7 +38,8 @@
         "chemistry": 60,
         "biology": 60,
         "english": 70,
-        "religion": 70
+        "religion": 70,
+        "Urdu": 20
     }, {
         "id": 14,
         "name": "Haider",
@@ -44,6 +48,7 @@
         "chemistry": 60,
         "biology": 60,
         "english": 70,
-        "religion": 70
+        "religion": 70,
+        "Urdu": 20
     }
 ]
